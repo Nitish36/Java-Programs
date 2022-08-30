@@ -2,13 +2,15 @@ import java.util.*;
 
 class Employees {
     int empid;
-    String empname;
-    int salary;
+    String empname, occupation;
+    int salary, age;
 
-    public Employees(int empid, String empname, int salary) {
+    public Employees(int empid, String empname, String occupation, int salary, int age) {
         this.empid = empid;
         this.empname = empname;
+        this.occupation = occupation;
         this.salary = salary;
+        this.age = age;
     }
 }
 
@@ -31,7 +33,8 @@ public class hashmap {
         System.out.println("Final Records Are");
         for (Map.Entry<Integer, Employees> entry : hm.entrySet()) {
             Employees e = entry.getValue();
-            System.out.println(e.empid + " " + e.empid + "," + e.empname + "," + e.salary);
+            System.out.println(
+                    e.empid + " " + e.empid + "," + e.empname + "," + e.occupation + "," + e.salary + "," + e.age);
         }
     }
 
@@ -51,14 +54,16 @@ public class hashmap {
             switch (ch) {
                 case 1:
                     int id;
-                    int salary;
-                    String name;
-                    System.out.println("Enter the id,name,salary of the employee");
+                    int salary, age;
+                    String name, occupation;
+                    System.out.println("Enter the id,name,occupation,salary,age of the employee");
                     id = sc.nextInt();
                     name = sc.next();
+                    occupation = sc.next();
                     salary = sc.nextInt();
+                    age = sc.nextInt();
 
-                    Employees obj = new Employees(id, name, salary);
+                    Employees obj = new Employees(id, name, occupation, salary, age);
                     add(id, obj);
 
                     break;
@@ -74,9 +79,11 @@ public class hashmap {
                     System.out.println("Enter the new record u want to replace with");
                     id = sc.nextInt();
                     name = sc.nextLine();
+                    occupation = sc.nextLine();
                     salary = sc.nextInt();
+                    age = sc.nextInt();
 
-                    Employees obj1 = new Employees(id, name, salary);
+                    Employees obj1 = new Employees(id, name, occupation, salary, age);
                     replace(id, obj1);
                     break;
                 case 4:
