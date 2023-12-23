@@ -1,47 +1,42 @@
 package Basics;
-import java.io.*;
-public class MinimumProduct {
-	
-	public static int minimum(int arr[],int n)
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class MaximumProduct {
+
+	public static int maximum(int arr[],int n)
 	{
 		if(n==1) {return arr[0];}
 		int neg_max = Integer.MIN_VALUE;
-		int pos_min = Integer.MAX_VALUE;
-		int count_zero=0,count_neg=0;
-		int prod = 1;
-		
+		int count_zero=0,count_neg=0,prod=1;
 		for(int i=0;i<n;i++)
 		{
 			if(arr[i] == 0)
 			{
-				count_zero++;continue;
+				count_zero++;
 			}
-			
 			if(arr[i]<0)
 			{
 				count_neg++;
 				neg_max = Math.max(neg_max, arr[i]);
 			}
-			
-			if(arr[i]>0 && arr[i]<pos_min)
-			{
-				pos_min = arr[i];
-			}
 			prod = prod*arr[i];
 		}
-		if(count_zero == n || (count_zero>0 && count_neg == 0))
+		if(count_zero==n)
 		{
 			return 0;
 		}
-		
-		if(count_neg == 0)
+		if(count_neg%2==1)
 		{
-			return pos_min;
+			
+		
+		if(count_neg==1 && (count_neg+count_zero==n && count_zero>0))
+		{
+			return 0;
 		}
-		
-		if(count_neg % 2 == 0 && count_neg!=0)
-		{
-			prod = prod / neg_max;
+		prod=prod/neg_max;
 		}
 		return prod;
 	}
@@ -58,7 +53,7 @@ public class MinimumProduct {
 		{
 			arr[i] = Integer.parseInt(br.readLine());
 		}
-		int prod = minimum(arr,n);
+		int prod = maximum(arr,n);
 		
 		System.out.println("Minimum Product is "+prod);
 		
